@@ -1,0 +1,146 @@
+.opportunities {
+  width: 100%;
+  padding: 100px 32px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.opportunities {
+  width: 100%;
+  padding: 100px 32px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.opportunity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.opportunity-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.opportunity-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow);
+}
+
+.opportunity-type {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 24px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.opportunity-card h3 {
+  margin: 0 0 10px;
+  color: var(--text-h);
+  font-size: 22px;
+}
+
+.opportunity-card > p {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.opportunity-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.reward-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.opportunity-footer strong {
+  color: var(--text-h);
+  font-size: 24px;
+}
+
+.opportunity-footer button {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.opportunity-footer button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 900px) {
+  .opportunity-grid {
+    grid-template-columns: 1fr;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .opportunities {
+    padding: 70px 20px;
+  }
+
+  .opportunity-grid {
+    gap: 16px;
+  }
+
+  .opportunity-card {
+    min-height: 280px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .opportunity-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .opportunity-footer button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .opportunities {
+    padding: 70px 20px;
+  }
+}

@@ -1,0 +1,125 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 24px 120px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-label {
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.hero-title {
+  max-width: 800px;
+  margin: 0;
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.hero-title span {
+  color: var(--accent);
+}
+
+.hero-description {
+  max-width: 600px;
+  margin-top: 24px;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.hero-cta {
+  margin-top: 0;
+  padding: 14px 28px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.hero-secondary {
+  padding: 14px 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hero-cta,
+.hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.hero-secondary:hover {
+  background: var(--code-bg);
+  border-color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-cta,
+  .hero-secondary {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-title {
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+}

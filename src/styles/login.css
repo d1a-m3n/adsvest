@@ -1,0 +1,170 @@
+.login-page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background: var(--bg);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.login-heading {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.login-heading h1 {
+  margin: 0 0 12px;
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+
+.login-heading p {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-card .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-card .form-group label {
+  color: var(--text-h);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-card .form-group input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.login-card .form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Password field */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text);
+
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.password-toggle:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+  box-shadow: none;
+  transform: translateY(-50%);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.login-card form > button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-register {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.login-register a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-register a:hover {
+  text-decoration: underline;
+}
+
+.login-card .alert-inline {
+  margin-top: 20px;
+}
+
+@media (max-width: 520px) {
+  .login-page {
+    padding: 24px 16px;
+  }
+
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .login-heading h1 {
+    font-size: 30px;
+  }
+}

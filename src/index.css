@@ -1,0 +1,265 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/sora";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: "Sora Variable", sans-serif;
+  --font-sans: "Sora Variable", sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ================================
+   Advest Design System
+================================ */
+
+:root {
+  --background: #0f1015;
+  --foreground: #f3f4f6;
+
+  --card: #181920;
+  --card-foreground: #f3f4f6;
+
+  --popover: #181920;
+  --popover-foreground: #f3f4f6;
+
+  --primary: #a855f7;
+  --primary-foreground: #ffffff;
+
+  --secondary: #24252d;
+  --secondary-foreground: #f3f4f6;
+
+  --muted: #24252d;
+  --muted-foreground: #9ca3af;
+
+  --accent: #a855f7;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+
+  --border: #2b2c35;
+  --input: #2b2c35;
+  --ring: rgba(168, 85, 247, 0.5);
+
+  --chart-1: #a855f7;
+  --chart-2: #22c55e;
+  --chart-3: #f59e0b;
+  --chart-4: #3b82f6;
+  --chart-5: #ef4444;
+
+  --radius: 0.625rem;
+
+  --sidebar: #0b0c10;
+  --sidebar-foreground: #f3f4f6;
+  --sidebar-primary: #a855f7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(168, 85, 247, 0.12);
+  --sidebar-accent-foreground: #c084fc;
+  --sidebar-border: #24252d;
+  --sidebar-ring: rgba(168, 85, 247, 0.5);
+
+  /* Advest theme */
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #0f1015;
+  --card-bg: #181920;
+  --code-bg: #24252d;
+
+  --accent-bg: rgba(168, 85, 247, 0.12);
+  --accent-border: rgba(168, 85, 247, 0.45);
+
+  --social-bg: rgba(36, 37, 45, 0.5);
+
+  --shadow:
+    rgba(0, 0, 0, 0.45) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  --sans: "Sora Variable", system-ui, sans-serif;
+  --heading: "Sora Variable", system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================
+   Dark Mode
+================================ */
+
+npx shadcn@4.20.0 add button
+
+/* ================================
+   Base
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  max-width: 1126px;
+  min-height: 100svh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  margin: 32px 0;
+  font-size: 56px;
+  letter-spacing: -1.68px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+}
+
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  display: inline-flex;
+  font-family: var(--mono);
+  color: var(--text-h);
+  border-radius: 4px;
+}
+
+code {
+  padding: 4px 8px;
+  font-size: 15px;
+  line-height: 135%;
+  background: var(--code-bg);
+}
+
+/* Admin dashboard scrollbar */
+.admin-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.admin-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-table-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.admin-table-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+
+  h1 {
+    margin: 20px 0;
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}

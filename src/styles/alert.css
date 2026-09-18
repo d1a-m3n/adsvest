@@ -1,0 +1,149 @@
+.alert {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  width: min(420px, calc(100vw - 32px));
+  padding: 16px 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--bg);
+  color: var(--text-h);
+
+  box-shadow: var(--shadow);
+
+  animation: alert-slide-in 0.3s ease;
+}
+
+.alert-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.alert-success {
+  border-color: #22c55e;
+}
+
+.alert-success .alert-icon {
+  background: #22c55e;
+  color: white;
+}
+
+.alert-error {
+  border-color: #ef4444;
+}
+
+.alert-error .alert-icon {
+  background: #ef4444;
+  color: white;
+}
+
+.alert-info {
+  border-color: var(--accent);
+}
+
+.alert-info .alert-icon {
+  background: var(--accent);
+  color: white;
+}
+
+.alert-close {
+  flex-shrink: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--text);
+
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.alert-close:hover {
+  background: var(--accent-bg);
+  color: var(--text-h);
+}
+
+/* Login page version */
+
+.alert-inline {
+  position: static;
+
+  width: 100%;
+  margin-top: 20px;
+
+  animation: alert-fade-in 0.3s ease;
+}
+
+@keyframes alert-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes alert-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .alert {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+
+    width: auto;
+  }
+}
