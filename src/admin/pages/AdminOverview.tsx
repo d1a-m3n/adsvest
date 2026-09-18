@@ -6,6 +6,7 @@ import {
   Wallet,
   Clock3,
 } from "lucide-react";
+import { API_URL } from "../../config";
 
 import AdminStatCard from "../components/AdminStatCard";
 
@@ -56,7 +57,7 @@ export default function AdminOverview() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/overview",
+          `${API_URL}/admin/overview`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

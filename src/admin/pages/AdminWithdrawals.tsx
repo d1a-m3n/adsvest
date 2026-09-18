@@ -7,6 +7,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { API_URL } from "../../config";
 
 type WithdrawalStatus =
   | "PENDING"
@@ -58,7 +59,7 @@ export default function AdminWithdrawals() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/withdrawals",
+        `${API_URL}/admin/withdrawals`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -138,7 +139,7 @@ export default function AdminWithdrawals() {
       setActionLoading(withdrawal.id);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/withdrawals/${withdrawal.id}/status`,
+        `${API_URL}/admin/withdrawals/${withdrawal.id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -195,7 +196,7 @@ export default function AdminWithdrawals() {
       setActionLoading(withdrawalToReject.id);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/withdrawals/${withdrawalToReject.id}/status`,
+        `${API_URL}/admin/withdrawals/${withdrawalToReject.id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -237,7 +238,7 @@ export default function AdminWithdrawals() {
       setActionLoading(withdrawal.id);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/withdrawals/${withdrawal.id}/paid`,
+        `${API_URL}/admin/withdrawals/${withdrawal.id}/paid`,
         {
           method: "PATCH",
           headers: {

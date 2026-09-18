@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import '../styles/dashboard.css'
 import Notifications from '../components/Notifications'
+import { API_URL } from "../config";
 
 type Wallet = {
   balance: string
@@ -41,7 +42,7 @@ function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         const walletResponse = await fetch(
-          'http://localhost:5000/api/wallet',
+          `${API_URL}/wallet`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -58,7 +59,7 @@ function Dashboard() {
         setWallet(walletData.data)
 
         const earningsResponse = await fetch(
-          'http://localhost:5000/api/earnings',
+          `${API_URL}/earnings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

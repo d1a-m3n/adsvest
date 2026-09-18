@@ -9,6 +9,7 @@ import { Eye, EyeOff } from 'lucide-react'
 import '../styles/login.css'
 import '../styles/alert.css'
 import Alert from '../components/Alert'
+import { API_URL } from "../config";
 
 function Login() {
   const { login } = useAuth()
@@ -47,7 +48,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/auth/login',
+        `${API_URL}/auth/login`,
         {
           method: 'POST',
           headers: {

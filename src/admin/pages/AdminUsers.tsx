@@ -4,6 +4,7 @@ import {
   Eye,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { API_URL } from "../../config";
 
 type AdminUser = {
   id: number;
@@ -58,7 +59,7 @@ export default function AdminUsers() {
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/admin/users",
+          `${API_URL}/admin/users`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -195,7 +196,7 @@ export default function AdminUsers() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/${user.id}/status`,
+        `${API_URL}/admin/users/${user.id}/status`,
         {
           method: "PATCH",
           headers: {

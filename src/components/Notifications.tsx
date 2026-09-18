@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Bell } from 'lucide-react'
 import '../styles/notifications.css'
+import { API_URL } from "../config";
 
 type Notification = {
   id: number
@@ -26,7 +27,7 @@ function Notifications() {
       }
 
       const response = await fetch(
-        'http://localhost:5000/api/notifications',
+        `${API_URL}/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -61,7 +62,7 @@ function Notifications() {
       if (!token) return
 
       const response = await fetch(
-        `http://localhost:5000/api/notifications/${id}/read`,
+        `${API_URL}/notifications/${id}/read`,
         {
           method: 'PATCH',
           headers: {
@@ -93,7 +94,7 @@ function Notifications() {
       if (!token) return
 
       const response = await fetch(
-        'http://localhost:5000/api/notifications/read-all',
+        `${API_URL}/notifications/read-all`,
         {
           method: 'PATCH',
           headers: {

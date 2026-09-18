@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import '../styles/dashboard-opportunities.css'
+import { API_URL } from "../config";
 
 type Opportunity = {
   id: number
@@ -37,7 +38,7 @@ function Opportunities() {
         }
 
         const response = await fetch(
-          'http://localhost:5000/api/opportunities',
+          `${API_URL}/opportunities`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -81,7 +82,7 @@ function Opportunities() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/opportunities/${opportunity.id}/start`,
+        `${API_URL}/opportunities/${opportunity.id}/start`,
         {
           method: 'POST',
           headers: {
@@ -144,7 +145,7 @@ function Opportunities() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/opportunities/${opportunityId}/complete`,
+        `${API_URL}/opportunities/${opportunityId}/complete`,
         {
           method: 'POST',
           headers: {

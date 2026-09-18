@@ -5,6 +5,7 @@ import {
   Clock3,
   Wallet,
 } from "lucide-react";
+import { API_URL } from "../../config";
 
 interface ReferralUser {
   id: number;
@@ -54,7 +55,7 @@ export default function AdminReferrals() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/referrals",
+          `${API_URL}/admin/referrals`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

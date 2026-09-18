@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { LogOut, Send } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { API_URL } from "../config";
 import '../styles/profile.css'
 
 type WithdrawalAccount = {
@@ -46,7 +47,7 @@ function Profile() {
         }
 
         const response = await fetch(
-          'http://localhost:5000/api/profile',
+          `${API_URL}/profile`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -136,7 +137,7 @@ function Profile() {
       }
 
       const response = await fetch(
-        'http://localhost:5000/api/profile/withdrawal-account',
+        `${API_URL}/profile/withdrawal-account`,
         {
           method: 'PUT',
           headers: {

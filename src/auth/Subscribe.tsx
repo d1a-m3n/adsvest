@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import '../styles/subscribe.css'
+import { API_URL } from "../config";
 
 function Subscribe() {
   const { user } = useAuth()
@@ -33,7 +34,7 @@ function Subscribe() {
       }
 
       const response = await fetch(
-        'http://localhost:5000/api/payments/subscribe',
+        `${API_URL}/payments/subscribe`,
         {
           method: 'POST',
           headers: {

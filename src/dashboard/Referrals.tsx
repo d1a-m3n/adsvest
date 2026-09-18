@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import '../styles/referrals.css'
+import { API_URL } from "../config";
 
 type ReferredUser = {
   id: number
@@ -58,7 +59,7 @@ function Referrals() {
         setError('')
 
         const response = await fetch(
-          'http://localhost:5000/api/referrals',
+          `${API_URL}/referrals`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

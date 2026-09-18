@@ -9,6 +9,7 @@ import {
   Pencil,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { API_URL } from "../../config";
 
 type TaskType = "TASK" | "SOCIAL" | "APP" | "OTHER";
 type TaskStatus = "ACTIVE" | "PAUSED";
@@ -38,7 +39,7 @@ interface TaskForm {
   externalUrl: string;
 }
 
-const API_URL = "http://localhost:5000/api/admin/tasks";
+
 
 const getToken = () => localStorage.getItem("token");
 

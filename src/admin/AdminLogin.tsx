@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { API_URL } from "../config";
 
 export default function AdminLogin() {
   const { login } = useAuth()
@@ -24,7 +25,7 @@ export default function AdminLogin() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/auth/login',
+        `${API_URL}/auth/login`,
         {
           method: 'POST',
           headers: {

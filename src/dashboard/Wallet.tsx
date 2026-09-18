@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from '../components/ui/dialog'
 import '../styles/wallet.css'
+import { API_URL } from "../config";
 
 type WalletTransaction = {
   id: number
@@ -100,25 +101,25 @@ function Wallet() {
           withdrawalsResponse,
           referralsResponse,
         ] = await Promise.all([
-          fetch('http://localhost:5000/api/wallet', {
+          fetch(`${API_URL}/wallet`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetch('http://localhost:5000/api/profile', {
+          fetch(`${API_URL}/profile`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetch('http://localhost:5000/api/withdrawals', {
+          fetch(`${API_URL}/withdrawals`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetch('http://localhost:5000/api/referrals', {
+          fetch(`${API_URL}/referrals`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -347,7 +348,7 @@ function Wallet() {
       }
 
       const response = await fetch(
-        'http://localhost:5000/api/withdrawals',
+        `${API_URL}/withdrawals`,
         {
           method: 'POST',
           headers: {
