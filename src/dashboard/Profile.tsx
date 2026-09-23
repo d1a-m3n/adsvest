@@ -343,7 +343,7 @@ function Profile() {
             </p>
 
             <a
-              href="https://t.me/adsvestopportunity"
+              href="https://t.me/advestgeneralspace"
               target="_blank"
               rel="noopener noreferrer"
               className="community-button"

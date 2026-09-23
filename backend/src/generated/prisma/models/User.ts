@@ -40,7 +40,6 @@ export type UserMinAggregateOutputType = {
   name: string | null
   passwordHash: string | null
   role: $Enums.UserRole | null
-  accountStatus: $Enums.AccountStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   phone: string | null
@@ -52,6 +51,7 @@ export type UserMinAggregateOutputType = {
   paystackCustomerCode: string | null
   paystackSubscriptionCode: string | null
   referralCode: string | null
+  accountStatus: $Enums.AccountStatus | null
   withdrawalBlockedUntil: Date | null
 }
 
@@ -61,7 +61,6 @@ export type UserMaxAggregateOutputType = {
   name: string | null
   passwordHash: string | null
   role: $Enums.UserRole | null
-  accountStatus: $Enums.AccountStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   phone: string | null
@@ -73,6 +72,7 @@ export type UserMaxAggregateOutputType = {
   paystackCustomerCode: string | null
   paystackSubscriptionCode: string | null
   referralCode: string | null
+  accountStatus: $Enums.AccountStatus | null
   withdrawalBlockedUntil: Date | null
 }
 
@@ -82,7 +82,6 @@ export type UserCountAggregateOutputType = {
   name: number
   passwordHash: number
   role: number
-  accountStatus: number
   createdAt: number
   updatedAt: number
   phone: number
@@ -94,6 +93,7 @@ export type UserCountAggregateOutputType = {
   paystackCustomerCode: number
   paystackSubscriptionCode: number
   referralCode: number
+  accountStatus: number
   withdrawalBlockedUntil: number
   _all: number
 }
@@ -113,7 +113,6 @@ export type UserMinAggregateInputType = {
   name?: true
   passwordHash?: true
   role?: true
-  accountStatus?: true
   createdAt?: true
   updatedAt?: true
   phone?: true
@@ -125,6 +124,7 @@ export type UserMinAggregateInputType = {
   paystackCustomerCode?: true
   paystackSubscriptionCode?: true
   referralCode?: true
+  accountStatus?: true
   withdrawalBlockedUntil?: true
 }
 
@@ -134,7 +134,6 @@ export type UserMaxAggregateInputType = {
   name?: true
   passwordHash?: true
   role?: true
-  accountStatus?: true
   createdAt?: true
   updatedAt?: true
   phone?: true
@@ -146,6 +145,7 @@ export type UserMaxAggregateInputType = {
   paystackCustomerCode?: true
   paystackSubscriptionCode?: true
   referralCode?: true
+  accountStatus?: true
   withdrawalBlockedUntil?: true
 }
 
@@ -155,7 +155,6 @@ export type UserCountAggregateInputType = {
   name?: true
   passwordHash?: true
   role?: true
-  accountStatus?: true
   createdAt?: true
   updatedAt?: true
   phone?: true
@@ -167,6 +166,7 @@ export type UserCountAggregateInputType = {
   paystackCustomerCode?: true
   paystackSubscriptionCode?: true
   referralCode?: true
+  accountStatus?: true
   withdrawalBlockedUntil?: true
   _all?: true
 }
@@ -263,7 +263,6 @@ export type UserGroupByOutputType = {
   name: string | null
   passwordHash: string
   role: $Enums.UserRole
-  accountStatus: $Enums.AccountStatus
   createdAt: Date
   updatedAt: Date
   phone: string | null
@@ -275,6 +274,7 @@ export type UserGroupByOutputType = {
   paystackCustomerCode: string | null
   paystackSubscriptionCode: string | null
   referralCode: string
+  accountStatus: $Enums.AccountStatus
   withdrawalBlockedUntil: Date | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
@@ -307,7 +307,6 @@ export type UserWhereInput = {
   name?: Prisma.StringNullableFilter<"User"> | string | null
   passwordHash?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
@@ -319,17 +318,18 @@ export type UserWhereInput = {
   paystackCustomerCode?: Prisma.StringNullableFilter<"User"> | string | null
   paystackSubscriptionCode?: Prisma.StringNullableFilter<"User"> | string | null
   referralCode?: Prisma.StringFilter<"User"> | string
+  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   applications?: Prisma.ApplicationListRelationFilter
   clicks?: Prisma.ClickListRelationFilter
   earnings?: Prisma.EarningListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  referral?: Prisma.XOR<Prisma.ReferralNullableScalarRelationFilter, Prisma.ReferralWhereInput> | null
+  referralsMade?: Prisma.ReferralListRelationFilter
   wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
   walletTransactions?: Prisma.WalletTransactionListRelationFilter
   withdrawals?: Prisma.WithdrawalListRelationFilter
   withdrawalAccount?: Prisma.XOR<Prisma.WithdrawalAccountNullableScalarRelationFilter, Prisma.WithdrawalAccountWhereInput> | null
-  referralsMade?: Prisma.ReferralListRelationFilter
-  referral?: Prisma.XOR<Prisma.ReferralNullableScalarRelationFilter, Prisma.ReferralWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -338,7 +338,6 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  accountStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -350,17 +349,18 @@ export type UserOrderByWithRelationInput = {
   paystackCustomerCode?: Prisma.SortOrderInput | Prisma.SortOrder
   paystackSubscriptionCode?: Prisma.SortOrderInput | Prisma.SortOrder
   referralCode?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   withdrawalBlockedUntil?: Prisma.SortOrderInput | Prisma.SortOrder
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
   clicks?: Prisma.ClickOrderByRelationAggregateInput
   earnings?: Prisma.EarningOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  referral?: Prisma.ReferralOrderByWithRelationInput
+  referralsMade?: Prisma.ReferralOrderByRelationAggregateInput
   wallet?: Prisma.WalletOrderByWithRelationInput
   walletTransactions?: Prisma.WalletTransactionOrderByRelationAggregateInput
   withdrawals?: Prisma.WithdrawalOrderByRelationAggregateInput
   withdrawalAccount?: Prisma.WithdrawalAccountOrderByWithRelationInput
-  referralsMade?: Prisma.ReferralOrderByRelationAggregateInput
-  referral?: Prisma.ReferralOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -375,7 +375,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringNullableFilter<"User"> | string | null
   passwordHash?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   emailVerificationExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -384,17 +383,18 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   membershipStatus?: Prisma.EnumMembershipStatusFilter<"User"> | $Enums.MembershipStatus
   paystackCustomerCode?: Prisma.StringNullableFilter<"User"> | string | null
   paystackSubscriptionCode?: Prisma.StringNullableFilter<"User"> | string | null
+  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   applications?: Prisma.ApplicationListRelationFilter
   clicks?: Prisma.ClickListRelationFilter
   earnings?: Prisma.EarningListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  referral?: Prisma.XOR<Prisma.ReferralNullableScalarRelationFilter, Prisma.ReferralWhereInput> | null
+  referralsMade?: Prisma.ReferralListRelationFilter
   wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
   walletTransactions?: Prisma.WalletTransactionListRelationFilter
   withdrawals?: Prisma.WithdrawalListRelationFilter
   withdrawalAccount?: Prisma.XOR<Prisma.WithdrawalAccountNullableScalarRelationFilter, Prisma.WithdrawalAccountWhereInput> | null
-  referralsMade?: Prisma.ReferralListRelationFilter
-  referral?: Prisma.XOR<Prisma.ReferralNullableScalarRelationFilter, Prisma.ReferralWhereInput> | null
 }, "id" | "email" | "phone" | "emailVerificationToken" | "referralCode">
 
 export type UserOrderByWithAggregationInput = {
@@ -403,7 +403,6 @@ export type UserOrderByWithAggregationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  accountStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -415,6 +414,7 @@ export type UserOrderByWithAggregationInput = {
   paystackCustomerCode?: Prisma.SortOrderInput | Prisma.SortOrder
   paystackSubscriptionCode?: Prisma.SortOrderInput | Prisma.SortOrder
   referralCode?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   withdrawalBlockedUntil?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
@@ -432,7 +432,6 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   passwordHash?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusWithAggregatesFilter<"User"> | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -444,6 +443,7 @@ export type UserScalarWhereWithAggregatesInput = {
   paystackCustomerCode?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   paystackSubscriptionCode?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   referralCode?: Prisma.StringWithAggregatesFilter<"User"> | string
+  accountStatus?: Prisma.EnumAccountStatusWithAggregatesFilter<"User"> | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
@@ -452,7 +452,6 @@ export type UserCreateInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -464,17 +463,18 @@ export type UserCreateInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -483,7 +483,6 @@ export type UserUncheckedCreateInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -495,17 +494,18 @@ export type UserUncheckedCreateInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUpdateInput = {
@@ -513,7 +513,6 @@ export type UserUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -525,17 +524,18 @@ export type UserUpdateInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -544,7 +544,6 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -556,17 +555,18 @@ export type UserUncheckedUpdateInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -575,7 +575,6 @@ export type UserCreateManyInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -587,6 +586,7 @@ export type UserCreateManyInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
 }
 
@@ -595,7 +595,6 @@ export type UserUpdateManyMutationInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -607,6 +606,7 @@ export type UserUpdateManyMutationInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -616,7 +616,6 @@ export type UserUncheckedUpdateManyInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -628,6 +627,7 @@ export type UserUncheckedUpdateManyInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -637,7 +637,6 @@ export type UserCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  accountStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -649,6 +648,7 @@ export type UserCountOrderByAggregateInput = {
   paystackCustomerCode?: Prisma.SortOrder
   paystackSubscriptionCode?: Prisma.SortOrder
   referralCode?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   withdrawalBlockedUntil?: Prisma.SortOrder
 }
 
@@ -662,7 +662,6 @@ export type UserMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  accountStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -674,6 +673,7 @@ export type UserMaxOrderByAggregateInput = {
   paystackCustomerCode?: Prisma.SortOrder
   paystackSubscriptionCode?: Prisma.SortOrder
   referralCode?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   withdrawalBlockedUntil?: Prisma.SortOrder
 }
 
@@ -683,7 +683,6 @@ export type UserMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  accountStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   phone?: Prisma.SortOrder
@@ -695,6 +694,7 @@ export type UserMinOrderByAggregateInput = {
   paystackCustomerCode?: Prisma.SortOrder
   paystackSubscriptionCode?: Prisma.SortOrder
   referralCode?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   withdrawalBlockedUntil?: Prisma.SortOrder
 }
 
@@ -724,10 +724,6 @@ export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
 }
 
-export type EnumAccountStatusFieldUpdateOperationsInput = {
-  set?: $Enums.AccountStatus
-}
-
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
@@ -738,6 +734,10 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
 
 export type EnumMembershipStatusFieldUpdateOperationsInput = {
   set?: $Enums.MembershipStatus
+}
+
+export type EnumAccountStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AccountStatus
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -862,24 +862,16 @@ export type UserUpdateOneRequiredWithoutWithdrawalAccountNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWithdrawalAccountInput, Prisma.UserUpdateWithoutWithdrawalAccountInput>, Prisma.UserUncheckedUpdateWithoutWithdrawalAccountInput>
 }
 
-export type UserCreateNestedOneWithoutReferralsMadeInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReferralsMadeInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
 export type UserCreateNestedOneWithoutReferralInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReferralInput, Prisma.UserUncheckedCreateWithoutReferralInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReferralInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutReferralsMadeNestedInput = {
+export type UserCreateNestedOneWithoutReferralsMadeInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReferralsMadeInput
-  upsert?: Prisma.UserUpsertWithoutReferralsMadeInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReferralsMadeInput, Prisma.UserUpdateWithoutReferralsMadeInput>, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
 }
 
 export type UserUpdateOneRequiredWithoutReferralNestedInput = {
@@ -890,12 +882,19 @@ export type UserUpdateOneRequiredWithoutReferralNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReferralInput, Prisma.UserUpdateWithoutReferralInput>, Prisma.UserUncheckedUpdateWithoutReferralInput>
 }
 
+export type UserUpdateOneRequiredWithoutReferralsMadeNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReferralsMadeInput
+  upsert?: Prisma.UserUpsertWithoutReferralsMadeInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReferralsMadeInput, Prisma.UserUpdateWithoutReferralsMadeInput>, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
+}
+
 export type UserCreateWithoutApplicationsInput = {
   email: string
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -907,16 +906,17 @@ export type UserCreateWithoutApplicationsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -925,7 +925,6 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -937,16 +936,17 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -970,7 +970,6 @@ export type UserUpdateWithoutApplicationsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -982,16 +981,17 @@ export type UserUpdateWithoutApplicationsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -1000,7 +1000,6 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1012,16 +1011,17 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutClicksInput = {
@@ -1029,7 +1029,6 @@ export type UserCreateWithoutClicksInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1041,16 +1040,17 @@ export type UserCreateWithoutClicksInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutClicksInput = {
@@ -1059,7 +1059,6 @@ export type UserUncheckedCreateWithoutClicksInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1071,16 +1070,17 @@ export type UserUncheckedCreateWithoutClicksInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutClicksInput = {
@@ -1104,7 +1104,6 @@ export type UserUpdateWithoutClicksInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1116,16 +1115,17 @@ export type UserUpdateWithoutClicksInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClicksInput = {
@@ -1134,7 +1134,6 @@ export type UserUncheckedUpdateWithoutClicksInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1146,16 +1145,17 @@ export type UserUncheckedUpdateWithoutClicksInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutEarningsInput = {
@@ -1163,7 +1163,6 @@ export type UserCreateWithoutEarningsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1175,16 +1174,17 @@ export type UserCreateWithoutEarningsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutEarningsInput = {
@@ -1193,7 +1193,6 @@ export type UserUncheckedCreateWithoutEarningsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1205,16 +1204,17 @@ export type UserUncheckedCreateWithoutEarningsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutEarningsInput = {
@@ -1238,7 +1238,6 @@ export type UserUpdateWithoutEarningsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1250,16 +1249,17 @@ export type UserUpdateWithoutEarningsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEarningsInput = {
@@ -1268,7 +1268,6 @@ export type UserUncheckedUpdateWithoutEarningsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1280,16 +1279,17 @@ export type UserUncheckedUpdateWithoutEarningsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1297,7 +1297,6 @@ export type UserCreateWithoutNotificationsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1309,16 +1308,17 @@ export type UserCreateWithoutNotificationsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1327,7 +1327,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1339,16 +1338,17 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1372,7 +1372,6 @@ export type UserUpdateWithoutNotificationsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1384,16 +1383,17 @@ export type UserUpdateWithoutNotificationsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1402,7 +1402,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1414,16 +1413,17 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutWalletInput = {
@@ -1431,7 +1431,6 @@ export type UserCreateWithoutWalletInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1443,16 +1442,17 @@ export type UserCreateWithoutWalletInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletInput = {
@@ -1461,7 +1461,6 @@ export type UserUncheckedCreateWithoutWalletInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1473,16 +1472,17 @@ export type UserUncheckedCreateWithoutWalletInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletInput = {
@@ -1506,7 +1506,6 @@ export type UserUpdateWithoutWalletInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1518,16 +1517,17 @@ export type UserUpdateWithoutWalletInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletInput = {
@@ -1536,7 +1536,6 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1548,16 +1547,17 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutWalletTransactionsInput = {
@@ -1565,7 +1565,6 @@ export type UserCreateWithoutWalletTransactionsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1577,16 +1576,17 @@ export type UserCreateWithoutWalletTransactionsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletTransactionsInput = {
@@ -1595,7 +1595,6 @@ export type UserUncheckedCreateWithoutWalletTransactionsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1607,16 +1606,17 @@ export type UserUncheckedCreateWithoutWalletTransactionsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletTransactionsInput = {
@@ -1640,7 +1640,6 @@ export type UserUpdateWithoutWalletTransactionsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1652,16 +1651,17 @@ export type UserUpdateWithoutWalletTransactionsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletTransactionsInput = {
@@ -1670,7 +1670,6 @@ export type UserUncheckedUpdateWithoutWalletTransactionsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1682,16 +1681,17 @@ export type UserUncheckedUpdateWithoutWalletTransactionsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutWithdrawalsInput = {
@@ -1699,7 +1699,6 @@ export type UserCreateWithoutWithdrawalsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1711,16 +1710,17 @@ export type UserCreateWithoutWithdrawalsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutWithdrawalsInput = {
@@ -1729,7 +1729,6 @@ export type UserUncheckedCreateWithoutWithdrawalsInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1741,16 +1740,17 @@ export type UserUncheckedCreateWithoutWithdrawalsInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutWithdrawalsInput = {
@@ -1774,7 +1774,6 @@ export type UserUpdateWithoutWithdrawalsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1786,16 +1785,17 @@ export type UserUpdateWithoutWithdrawalsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWithdrawalsInput = {
@@ -1804,7 +1804,6 @@ export type UserUncheckedUpdateWithoutWithdrawalsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1816,16 +1815,17 @@ export type UserUncheckedUpdateWithoutWithdrawalsInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserCreateWithoutWithdrawalAccountInput = {
@@ -1833,7 +1833,6 @@ export type UserCreateWithoutWithdrawalAccountInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1845,16 +1844,17 @@ export type UserCreateWithoutWithdrawalAccountInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserUncheckedCreateWithoutWithdrawalAccountInput = {
@@ -1863,7 +1863,6 @@ export type UserUncheckedCreateWithoutWithdrawalAccountInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -1875,16 +1874,17 @@ export type UserUncheckedCreateWithoutWithdrawalAccountInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
 }
 
 export type UserCreateOrConnectWithoutWithdrawalAccountInput = {
@@ -1908,7 +1908,6 @@ export type UserUpdateWithoutWithdrawalAccountInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1920,16 +1919,17 @@ export type UserUpdateWithoutWithdrawalAccountInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWithdrawalAccountInput = {
@@ -1938,7 +1938,6 @@ export type UserUncheckedUpdateWithoutWithdrawalAccountInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1950,80 +1949,17 @@ export type UserUncheckedUpdateWithoutWithdrawalAccountInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
-}
-
-export type UserCreateWithoutReferralsMadeInput = {
-  email: string
-  name?: string | null
-  passwordHash: string
-  role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  phone?: string | null
-  emailVerificationExpires?: Date | string | null
-  emailVerificationToken?: string | null
-  emailVerifiedAt?: Date | string | null
-  membershipExpiresAt?: Date | string | null
-  membershipStatus?: $Enums.MembershipStatus
-  paystackCustomerCode?: string | null
-  paystackSubscriptionCode?: string | null
-  referralCode: string
-  withdrawalBlockedUntil?: Date | string | null
-  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
-  clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
-  earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
-  walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
-  withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
-  withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
-}
-
-export type UserUncheckedCreateWithoutReferralsMadeInput = {
-  id?: number
-  email: string
-  name?: string | null
-  passwordHash: string
-  role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  phone?: string | null
-  emailVerificationExpires?: Date | string | null
-  emailVerificationToken?: string | null
-  emailVerifiedAt?: Date | string | null
-  membershipExpiresAt?: Date | string | null
-  membershipStatus?: $Enums.MembershipStatus
-  paystackCustomerCode?: string | null
-  paystackSubscriptionCode?: string | null
-  referralCode: string
-  withdrawalBlockedUntil?: Date | string | null
-  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
-  clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
-  earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
-  walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
-  withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
-  withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
-}
-
-export type UserCreateOrConnectWithoutReferralsMadeInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
 }
 
 export type UserCreateWithoutReferralInput = {
@@ -2031,7 +1967,6 @@ export type UserCreateWithoutReferralInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -2043,16 +1978,17 @@ export type UserCreateWithoutReferralInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralCreateNestedManyWithoutReferrerInput
 }
 
 export type UserUncheckedCreateWithoutReferralInput = {
@@ -2061,7 +1997,6 @@ export type UserUncheckedCreateWithoutReferralInput = {
   name?: string | null
   passwordHash: string
   role?: $Enums.UserRole
-  accountStatus?: $Enums.AccountStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   phone?: string | null
@@ -2073,16 +2008,17 @@ export type UserUncheckedCreateWithoutReferralInput = {
   paystackCustomerCode?: string | null
   paystackSubscriptionCode?: string | null
   referralCode: string
+  accountStatus?: $Enums.AccountStatus
   withdrawalBlockedUntil?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
   wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
   withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
-  referralsMade?: Prisma.ReferralUncheckedCreateNestedManyWithoutReferrerInput
 }
 
 export type UserCreateOrConnectWithoutReferralInput = {
@@ -2090,74 +2026,68 @@ export type UserCreateOrConnectWithoutReferralInput = {
   create: Prisma.XOR<Prisma.UserCreateWithoutReferralInput, Prisma.UserUncheckedCreateWithoutReferralInput>
 }
 
-export type UserUpsertWithoutReferralsMadeInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutReferralsMadeInput, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
+export type UserCreateWithoutReferralsMadeInput = {
+  email: string
+  name?: string | null
+  passwordHash: string
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  phone?: string | null
+  emailVerificationExpires?: Date | string | null
+  emailVerificationToken?: string | null
+  emailVerifiedAt?: Date | string | null
+  membershipExpiresAt?: Date | string | null
+  membershipStatus?: $Enums.MembershipStatus
+  paystackCustomerCode?: string | null
+  paystackSubscriptionCode?: string | null
+  referralCode: string
+  accountStatus?: $Enums.AccountStatus
+  withdrawalBlockedUntil?: Date | string | null
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  clicks?: Prisma.ClickCreateNestedManyWithoutUserInput
+  earnings?: Prisma.EarningCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralCreateNestedOneWithoutReferredUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
+  walletTransactions?: Prisma.WalletTransactionCreateNestedManyWithoutUserInput
+  withdrawals?: Prisma.WithdrawalCreateNestedManyWithoutUserInput
+  withdrawalAccount?: Prisma.WithdrawalAccountCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReferralsMadeInput = {
+  id?: number
+  email: string
+  name?: string | null
+  passwordHash: string
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  phone?: string | null
+  emailVerificationExpires?: Date | string | null
+  emailVerificationToken?: string | null
+  emailVerifiedAt?: Date | string | null
+  membershipExpiresAt?: Date | string | null
+  membershipStatus?: $Enums.MembershipStatus
+  paystackCustomerCode?: string | null
+  paystackSubscriptionCode?: string | null
+  referralCode: string
+  accountStatus?: $Enums.AccountStatus
+  withdrawalBlockedUntil?: Date | string | null
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  clicks?: Prisma.ClickUncheckedCreateNestedManyWithoutUserInput
+  earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  referral?: Prisma.ReferralUncheckedCreateNestedOneWithoutReferredUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
+  walletTransactions?: Prisma.WalletTransactionUncheckedCreateNestedManyWithoutUserInput
+  withdrawals?: Prisma.WithdrawalUncheckedCreateNestedManyWithoutUserInput
+  withdrawalAccount?: Prisma.WithdrawalAccountUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReferralsMadeInput = {
+  where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutReferralsMadeInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutReferralsMadeInput, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
-}
-
-export type UserUpdateWithoutReferralsMadeInput = {
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerificationExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  membershipExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  membershipStatus?: Prisma.EnumMembershipStatusFieldUpdateOperationsInput | $Enums.MembershipStatus
-  paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referralCode?: Prisma.StringFieldUpdateOperationsInput | string
-  withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
-  clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
-  earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
-  walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
-  withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
-  withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutReferralsMadeInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerificationExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  membershipExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  membershipStatus?: Prisma.EnumMembershipStatusFieldUpdateOperationsInput | $Enums.MembershipStatus
-  paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referralCode?: Prisma.StringFieldUpdateOperationsInput | string
-  withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
-  clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
-  earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
-  walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
-  withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
-  withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
 }
 
 export type UserUpsertWithoutReferralInput = {
@@ -2176,7 +2106,6 @@ export type UserUpdateWithoutReferralInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2188,16 +2117,17 @@ export type UserUpdateWithoutReferralInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUpdateManyWithoutReferrerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReferralInput = {
@@ -2206,7 +2136,6 @@ export type UserUncheckedUpdateWithoutReferralInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2218,16 +2147,87 @@ export type UserUncheckedUpdateWithoutReferralInput = {
   paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
   wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
   withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
   withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
-  referralsMade?: Prisma.ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+}
+
+export type UserUpsertWithoutReferralsMadeInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReferralsMadeInput, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReferralsMadeInput, Prisma.UserUncheckedCreateWithoutReferralsMadeInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReferralsMadeInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReferralsMadeInput, Prisma.UserUncheckedUpdateWithoutReferralsMadeInput>
+}
+
+export type UserUpdateWithoutReferralsMadeInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  membershipExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  membershipStatus?: Prisma.EnumMembershipStatusFieldUpdateOperationsInput | $Enums.MembershipStatus
+  paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  clicks?: Prisma.ClickUpdateManyWithoutUserNestedInput
+  earnings?: Prisma.EarningUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUpdateOneWithoutReferredUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
+  walletTransactions?: Prisma.WalletTransactionUpdateManyWithoutUserNestedInput
+  withdrawals?: Prisma.WithdrawalUpdateManyWithoutUserNestedInput
+  withdrawalAccount?: Prisma.WithdrawalAccountUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReferralsMadeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  membershipExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  membershipStatus?: Prisma.EnumMembershipStatusFieldUpdateOperationsInput | $Enums.MembershipStatus
+  paystackCustomerCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paystackSubscriptionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referralCode?: Prisma.StringFieldUpdateOperationsInput | string
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  withdrawalBlockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  clicks?: Prisma.ClickUncheckedUpdateManyWithoutUserNestedInput
+  earnings?: Prisma.EarningUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  referral?: Prisma.ReferralUncheckedUpdateOneWithoutReferredUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
+  walletTransactions?: Prisma.WalletTransactionUncheckedUpdateManyWithoutUserNestedInput
+  withdrawals?: Prisma.WithdrawalUncheckedUpdateManyWithoutUserNestedInput
+  withdrawalAccount?: Prisma.WithdrawalAccountUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -2240,9 +2240,9 @@ export type UserCountOutputType = {
   clicks: number
   earnings: number
   notifications: number
+  referralsMade: number
   walletTransactions: number
   withdrawals: number
-  referralsMade: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2250,9 +2250,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   clicks?: boolean | UserCountOutputTypeCountClicksArgs
   earnings?: boolean | UserCountOutputTypeCountEarningsArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  referralsMade?: boolean | UserCountOutputTypeCountReferralsMadeArgs
   walletTransactions?: boolean | UserCountOutputTypeCountWalletTransactionsArgs
   withdrawals?: boolean | UserCountOutputTypeCountWithdrawalsArgs
-  referralsMade?: boolean | UserCountOutputTypeCountReferralsMadeArgs
 }
 
 /**
@@ -2296,6 +2296,13 @@ export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Ty
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountReferralsMadeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReferralWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountWalletTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.WalletTransactionWhereInput
 }
@@ -2307,13 +2314,6 @@ export type UserCountOutputTypeCountWithdrawalsArgs<ExtArgs extends runtime.Type
   where?: Prisma.WithdrawalWhereInput
 }
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountReferralsMadeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ReferralWhereInput
-}
-
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2321,7 +2321,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   passwordHash?: boolean
   role?: boolean
-  accountStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   phone?: boolean
@@ -2333,17 +2332,18 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   paystackCustomerCode?: boolean
   paystackSubscriptionCode?: boolean
   referralCode?: boolean
+  accountStatus?: boolean
   withdrawalBlockedUntil?: boolean
   applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>
   clicks?: boolean | Prisma.User$clicksArgs<ExtArgs>
   earnings?: boolean | Prisma.User$earningsArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  referral?: boolean | Prisma.User$referralArgs<ExtArgs>
+  referralsMade?: boolean | Prisma.User$referralsMadeArgs<ExtArgs>
   wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   walletTransactions?: boolean | Prisma.User$walletTransactionsArgs<ExtArgs>
   withdrawals?: boolean | Prisma.User$withdrawalsArgs<ExtArgs>
   withdrawalAccount?: boolean | Prisma.User$withdrawalAccountArgs<ExtArgs>
-  referralsMade?: boolean | Prisma.User$referralsMadeArgs<ExtArgs>
-  referral?: boolean | Prisma.User$referralArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2353,7 +2353,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   passwordHash?: boolean
   role?: boolean
-  accountStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   phone?: boolean
@@ -2365,6 +2364,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   paystackCustomerCode?: boolean
   paystackSubscriptionCode?: boolean
   referralCode?: boolean
+  accountStatus?: boolean
   withdrawalBlockedUntil?: boolean
 }, ExtArgs["result"]["user"]>
 
@@ -2374,7 +2374,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   passwordHash?: boolean
   role?: boolean
-  accountStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   phone?: boolean
@@ -2386,6 +2385,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   paystackCustomerCode?: boolean
   paystackSubscriptionCode?: boolean
   referralCode?: boolean
+  accountStatus?: boolean
   withdrawalBlockedUntil?: boolean
 }, ExtArgs["result"]["user"]>
 
@@ -2395,7 +2395,6 @@ export type UserSelectScalar = {
   name?: boolean
   passwordHash?: boolean
   role?: boolean
-  accountStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   phone?: boolean
@@ -2407,21 +2406,22 @@ export type UserSelectScalar = {
   paystackCustomerCode?: boolean
   paystackSubscriptionCode?: boolean
   referralCode?: boolean
+  accountStatus?: boolean
   withdrawalBlockedUntil?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "passwordHash" | "role" | "accountStatus" | "createdAt" | "updatedAt" | "phone" | "emailVerificationExpires" | "emailVerificationToken" | "emailVerifiedAt" | "membershipExpiresAt" | "membershipStatus" | "paystackCustomerCode" | "paystackSubscriptionCode" | "referralCode" | "withdrawalBlockedUntil", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "passwordHash" | "role" | "createdAt" | "updatedAt" | "phone" | "emailVerificationExpires" | "emailVerificationToken" | "emailVerifiedAt" | "membershipExpiresAt" | "membershipStatus" | "paystackCustomerCode" | "paystackSubscriptionCode" | "referralCode" | "accountStatus" | "withdrawalBlockedUntil", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>
   clicks?: boolean | Prisma.User$clicksArgs<ExtArgs>
   earnings?: boolean | Prisma.User$earningsArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  referral?: boolean | Prisma.User$referralArgs<ExtArgs>
+  referralsMade?: boolean | Prisma.User$referralsMadeArgs<ExtArgs>
   wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   walletTransactions?: boolean | Prisma.User$walletTransactionsArgs<ExtArgs>
   withdrawals?: boolean | Prisma.User$withdrawalsArgs<ExtArgs>
   withdrawalAccount?: boolean | Prisma.User$withdrawalAccountArgs<ExtArgs>
-  referralsMade?: boolean | Prisma.User$referralsMadeArgs<ExtArgs>
-  referral?: boolean | Prisma.User$referralArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2434,12 +2434,12 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     clicks: Prisma.$ClickPayload<ExtArgs>[]
     earnings: Prisma.$EarningPayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    referral: Prisma.$ReferralPayload<ExtArgs> | null
+    referralsMade: Prisma.$ReferralPayload<ExtArgs>[]
     wallet: Prisma.$WalletPayload<ExtArgs> | null
     walletTransactions: Prisma.$WalletTransactionPayload<ExtArgs>[]
     withdrawals: Prisma.$WithdrawalPayload<ExtArgs>[]
     withdrawalAccount: Prisma.$WithdrawalAccountPayload<ExtArgs> | null
-    referralsMade: Prisma.$ReferralPayload<ExtArgs>[]
-    referral: Prisma.$ReferralPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2447,7 +2447,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     name: string | null
     passwordHash: string
     role: $Enums.UserRole
-    accountStatus: $Enums.AccountStatus
     createdAt: Date
     updatedAt: Date
     phone: string | null
@@ -2459,6 +2458,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     paystackCustomerCode: string | null
     paystackSubscriptionCode: string | null
     referralCode: string
+    accountStatus: $Enums.AccountStatus
     withdrawalBlockedUntil: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
@@ -2858,12 +2858,12 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   clicks<T extends Prisma.User$clicksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$clicksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClickPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   earnings<T extends Prisma.User$earningsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$earningsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  referral<T extends Prisma.User$referralArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$referralArgs<ExtArgs>>): Prisma.Prisma__ReferralClient<runtime.Types.Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  referralsMade<T extends Prisma.User$referralsMadeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$referralsMadeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wallet<T extends Prisma.User$walletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletArgs<ExtArgs>>): Prisma.Prisma__WalletClient<runtime.Types.Result.GetResult<Prisma.$WalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   walletTransactions<T extends Prisma.User$walletTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WalletTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   withdrawals<T extends Prisma.User$withdrawalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$withdrawalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WithdrawalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   withdrawalAccount<T extends Prisma.User$withdrawalAccountArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$withdrawalAccountArgs<ExtArgs>>): Prisma.Prisma__WithdrawalAccountClient<runtime.Types.Result.GetResult<Prisma.$WithdrawalAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  referralsMade<T extends Prisma.User$referralsMadeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$referralsMadeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  referral<T extends Prisma.User$referralArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$referralArgs<ExtArgs>>): Prisma.Prisma__ReferralClient<runtime.Types.Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2898,7 +2898,6 @@ export interface UserFieldRefs {
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly passwordHash: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'UserRole'>
-  readonly accountStatus: Prisma.FieldRef<"User", 'AccountStatus'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
@@ -2910,6 +2909,7 @@ export interface UserFieldRefs {
   readonly paystackCustomerCode: Prisma.FieldRef<"User", 'String'>
   readonly paystackSubscriptionCode: Prisma.FieldRef<"User", 'String'>
   readonly referralCode: Prisma.FieldRef<"User", 'String'>
+  readonly accountStatus: Prisma.FieldRef<"User", 'AccountStatus'>
   readonly withdrawalBlockedUntil: Prisma.FieldRef<"User", 'DateTime'>
 }
     
@@ -3400,6 +3400,49 @@ export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * User.referral
+ */
+export type User$referralArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Referral
+   */
+  select?: Prisma.ReferralSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Referral
+   */
+  omit?: Prisma.ReferralOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReferralInclude<ExtArgs> | null
+  where?: Prisma.ReferralWhereInput
+}
+
+/**
+ * User.referralsMade
+ */
+export type User$referralsMadeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Referral
+   */
+  select?: Prisma.ReferralSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Referral
+   */
+  omit?: Prisma.ReferralOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReferralInclude<ExtArgs> | null
+  where?: Prisma.ReferralWhereInput
+  orderBy?: Prisma.ReferralOrderByWithRelationInput | Prisma.ReferralOrderByWithRelationInput[]
+  cursor?: Prisma.ReferralWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReferralScalarFieldEnum | Prisma.ReferralScalarFieldEnum[]
+}
+
+/**
  * User.wallet
  */
 export type User$walletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3483,49 +3526,6 @@ export type User$withdrawalAccountArgs<ExtArgs extends runtime.Types.Extensions.
    */
   include?: Prisma.WithdrawalAccountInclude<ExtArgs> | null
   where?: Prisma.WithdrawalAccountWhereInput
-}
-
-/**
- * User.referralsMade
- */
-export type User$referralsMadeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Referral
-   */
-  select?: Prisma.ReferralSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Referral
-   */
-  omit?: Prisma.ReferralOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ReferralInclude<ExtArgs> | null
-  where?: Prisma.ReferralWhereInput
-  orderBy?: Prisma.ReferralOrderByWithRelationInput | Prisma.ReferralOrderByWithRelationInput[]
-  cursor?: Prisma.ReferralWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ReferralScalarFieldEnum | Prisma.ReferralScalarFieldEnum[]
-}
-
-/**
- * User.referral
- */
-export type User$referralArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Referral
-   */
-  select?: Prisma.ReferralSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Referral
-   */
-  omit?: Prisma.ReferralOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ReferralInclude<ExtArgs> | null
-  where?: Prisma.ReferralWhereInput
 }
 
 /**

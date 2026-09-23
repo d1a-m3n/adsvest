@@ -86,7 +86,6 @@ export const UserScalarFieldEnum = {
   name: 'name',
   passwordHash: 'passwordHash',
   role: 'role',
-  accountStatus: 'accountStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   phone: 'phone',
@@ -98,6 +97,7 @@ export const UserScalarFieldEnum = {
   paystackCustomerCode: 'paystackCustomerCode',
   paystackSubscriptionCode: 'paystackSubscriptionCode',
   referralCode: 'referralCode',
+  accountStatus: 'accountStatus',
   withdrawalBlockedUntil: 'withdrawalBlockedUntil'
 } as const
 

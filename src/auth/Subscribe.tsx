@@ -1,8 +1,9 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import '../styles/subscribe.css'
 import { API_URL } from "../config";
+import { ArrowLeft } from "lucide-react";
 
 function Subscribe() {
   const { user } = useAuth()
@@ -87,7 +88,7 @@ function Subscribe() {
         <div className="subscription-plan">
           <div>
             <span className="plan-label">Monthly Membership</span>
-            <h2>₦500</h2>
+            <h2>₦1,000</h2>
           </div>
 
           <span className="plan-duration">30 days</span>
@@ -116,17 +117,17 @@ function Subscribe() {
           onClick={handleSubscribe}
           disabled={loading}
         >
-          {loading ? 'Opening payment...' : 'Pay ₦500 & Continue'}
+          {loading ? 'Opening payment...' : 'Pay ₦1,000 & Continue'}
         </button>
 
         <p className="subscription-note">
           Your membership lasts for 30 days from the date of successful
-          payment. You will need to pay ₦500 again after your membership
-          expires.
+          payment. You will need to pay ₦1,000 again when your membership expires.
         </p>
 
         <Link to="/register" className="subscription-back">
-          ← Back
+          <ArrowLeft size={20} />
+           Back
         </Link>
       </div>
     </div>

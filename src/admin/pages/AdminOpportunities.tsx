@@ -42,6 +42,7 @@ interface TaskForm {
 
 
 const getToken = () => localStorage.getItem("token");
+const TASKS_URL = `${API_URL}/admin/tasks`;
 
 const formatCurrency = (
   amount: number | null,
@@ -113,7 +114,7 @@ export default function AdminOpportunities() {
 
       const token = getToken();
 
-      const response = await fetch(API_URL, {
+      const response = await fetch(TASKS_URL, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -200,7 +201,7 @@ export default function AdminOpportunities() {
 
       const token = getToken();
 
-      const response = await fetch(API_URL, {
+      const response = await fetch(TASKS_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -296,7 +297,7 @@ export default function AdminOpportunities() {
       const token = getToken();
 
       const response = await fetch(
-        `${API_URL}/${selectedTask.id}`,
+        `${TASKS_URL}/${selectedTask.id}`,
         {
           method: "PATCH",
           headers: {
@@ -361,7 +362,7 @@ export default function AdminOpportunities() {
       const token = getToken();
 
       const response = await fetch(
-        `${API_URL}/${task.id}/status`,
+        `${TASKS_URL}/${task.id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -423,7 +424,7 @@ export default function AdminOpportunities() {
       const token = getToken();
 
       const response = await fetch(
-        `${API_URL}/${task.id}`,
+        `${TASKS_URL}/${task.id}`,
         {
           method: "DELETE",
           headers: {
@@ -1273,3 +1274,4 @@ export default function AdminOpportunities() {
     </>
   );
 }
+

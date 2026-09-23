@@ -26,7 +26,7 @@ export const initializeMembershipPayment = async (
       },
       body: JSON.stringify({
         email,
-        amount: 50000,
+        amount: 100000,
         currency: "NGN",
         callback_url: `${process.env.FRONTEND_URL}/subscription/success`,
         metadata: {
@@ -53,4 +53,24 @@ export const verifyPaystackSignature = (payload: string, signature: string) => {
     .digest("hex");
 
   return hash === signature;
+};
+
+export const verifyMembershipPayment = async (reference: string) => {
+  const response = await fetch(
+    `https://api.paystack.co/transaction/verify/${encodeURIComponent(reference)}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
+      },
+    },
+  );
+
+  const data = await response.json();
+
+  if (!response.ok || !data.status) {
+    throw new Error(data.message || "Failed to verify Paystack payment");
+  }
+
+  return data.data;
 };

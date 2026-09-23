@@ -75,7 +75,7 @@ function Wallet() {
   const [withdrawalAccount, setWithdrawalAccount] =
     useState<WithdrawalAccount | null>(null)
 
-  const requiredReferrals = 10
+  const requiredReferrals = 7
 
   const hasCompletedFirstWithdrawal =
     withdrawals.length > 0
@@ -706,41 +706,6 @@ function Wallet() {
                 to your saved payment account.
               </DialogDescription>
             </DialogHeader>
-
-            {!hasCompletedFirstWithdrawal && (
-              <div className="withdrawal-requirement">
-                <div>
-                  <p className="dashboard-label">
-                    FIRST WITHDRAWAL REQUIREMENT
-                  </p>
-
-                  <h3>
-                    {referralRequirementMet
-                      ? 'Requirement completed'
-                      : '10 active referrals required'}
-                  </h3>
-
-                  <p>
-                    {referralRequirementMet
-                      ? 'You are eligible to make your first withdrawal.'
-                      : `You currently have ${activeReferrals} active referrals. You need ${requiredReferrals - activeReferrals} more.`}
-                  </p>
-                </div>
-
-                <div className="referral-progress">
-                  <strong>
-                    {Math.min(
-                      activeReferrals,
-                      requiredReferrals,
-                    )}{' '}
-                    / {requiredReferrals}
-                  </strong>
-
-                  <span>Active referrals</span>
-                </div>
-              </div>
-            )}
-
             <div className="withdraw-account">
               <p className="dashboard-label">
                 PAYMENT ACCOUNT
@@ -842,3 +807,4 @@ function Wallet() {
 }
 
 export default Wallet
+

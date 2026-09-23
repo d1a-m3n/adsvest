@@ -1286,7 +1286,6 @@ export const UserScalarFieldEnum = {
   name: 'name',
   passwordHash: 'passwordHash',
   role: 'role',
-  accountStatus: 'accountStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   phone: 'phone',
@@ -1298,6 +1297,7 @@ export const UserScalarFieldEnum = {
   paystackCustomerCode: 'paystackCustomerCode',
   paystackSubscriptionCode: 'paystackSubscriptionCode',
   referralCode: 'referralCode',
+  accountStatus: 'accountStatus',
   withdrawalBlockedUntil: 'withdrawalBlockedUntil'
 } as const
 
@@ -1516,20 +1516,6 @@ export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 
 
 /**
- * Reference to a field of type 'AccountStatus'
- */
-export type EnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus'>
-    
-
-
-/**
- * Reference to a field of type 'AccountStatus[]'
- */
-export type ListEnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1554,6 +1540,20 @@ export type EnumMembershipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'MembershipStatus[]'
  */
 export type ListEnumMembershipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MembershipStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AccountStatus'
+ */
+export type EnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AccountStatus[]'
+ */
+export type ListEnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus[]'>
     
 
 
