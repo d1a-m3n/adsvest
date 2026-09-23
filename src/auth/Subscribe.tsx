@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import '../styles/subscribe.css'
 import { API_URL } from "../config";
-import { ArrowLeft } from "lucide-react";
 
 function Subscribe() {
   const { user } = useAuth()
@@ -126,7 +125,6 @@ function Subscribe() {
         </p>
 
         <Link to="/register" className="subscription-back">
-          <ArrowLeft size={20} />
            Back
         </Link>
       </div>
